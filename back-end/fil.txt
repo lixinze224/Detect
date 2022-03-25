@@ -1,0 +1,144 @@
+卷 OS 的文件夹 PATH 列表
+卷序列号为 3E27-4AB0
+C:.
+│  .gitignore
+│  app.py
+│  fil.txt
+│  file.txt
+│  LICENSE
+│  README.md
+│  
+├─core
+│  │  main.py
+│  │  predict.py
+│  │  process.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          main.cpython-38.pyc
+│          predict.cpython-38.pyc
+│          process.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─lib
+│  ├─backbone
+│  │  │  fpn.py
+│  │  │  resnet50.py
+│  │  │  
+│  │  └─__pycache__
+│  │          fpn.cpython-38.pyc
+│  │          resnet50.cpython-38.pyc
+│  │          
+│  ├─data
+│  │      CrowdHuman.py
+│  │      
+│  ├─det_oprs
+│  │  │  anchors_generator.py
+│  │  │  bbox_opr.py
+│  │  │  cascade_roi_target.py
+│  │  │  find_top_rpn_proposals.py
+│  │  │  fpn_anchor_target.py
+│  │  │  fpn_roi_target.py
+│  │  │  loss_opr.py
+│  │  │  retina_anchor_target.py
+│  │  │  utils.py
+│  │  │  
+│  │  └─__pycache__
+│  │          anchors_generator.cpython-38.pyc
+│  │          bbox_opr.cpython-38.pyc
+│  │          find_top_rpn_proposals.cpython-38.pyc
+│  │          fpn_anchor_target.cpython-38.pyc
+│  │          fpn_roi_target.cpython-38.pyc
+│  │          loss_opr.cpython-38.pyc
+│  │          utils.cpython-38.pyc
+│  │          
+│  ├─evaluate
+│  │  │  compute_APMR.py
+│  │  │  compute_JI.py
+│  │  │  __init__.py
+│  │  │  
+│  │  ├─APMRToolkits
+│  │  │      database.py
+│  │  │      image.py
+│  │  │      __init__.py
+│  │  │      
+│  │  └─JIToolkits
+│  │          JI_tools.py
+│  │          matching.py
+│  │          
+│  ├─layers
+│  │  │  batch_norm.py
+│  │  │  pooler.py
+│  │  │  
+│  │  └─__pycache__
+│  │          batch_norm.cpython-38.pyc
+│  │          pooler.cpython-38.pyc
+│  │          
+│  ├─module
+│  │  │  rpn.py
+│  │  │  
+│  │  └─__pycache__
+│  │          rpn.cpython-38.pyc
+│  │          
+│  └─utils
+│      │  misc_utils.py
+│      │  nms_utils.py
+│      │  SGD_bias.py
+│      │  visual_utils.py
+│      │  
+│      └─__pycache__
+│              misc_utils.cpython-38.pyc
+│              nms_utils.cpython-38.pyc
+│              visual_utils.cpython-38.pyc
+│              
+├─model
+│  ├─rcnn_emd_refine
+│  │  │  config.py
+│  │  │  network.py
+│  │  │  
+│  │  ├─outputs
+│  │  │  └─model_dump
+│  │  │          dump-40.pth
+│  │  │          
+│  │  └─__pycache__
+│  │          config.cpython-38.pyc
+│  │          network.cpython-38.pyc
+│  │          __init__.cpython-38.pyc
+│  │          
+│  ├─rcnn_emd_simple
+│  │      config.py
+│  │      network.py
+│  │      
+│  ├─rcnn_fpn_baseline
+│  │      config.py
+│  │      network.py
+│  │      
+│  ├─retina_emd_simple
+│  │      config.py
+│  │      network.py
+│  │      
+│  └─retina_fpn_baseline
+│          config.py
+│          network.py
+│          
+├─tmp
+│  ├─ct
+│  ├─draw
+│  ├─image
+│  ├─mask
+│  └─uploads
+├─tools
+│  │  inference.py
+│  │  
+│  ├─inputs
+│  │      7.jpg
+│  │      8.jpg
+│  │      
+│  ├─outputs
+│  │      7.png
+│  │      8.png
+│  │      
+│  └─__pycache__
+│          inference.cpython-38.pyc
+│          
+└─uploads
