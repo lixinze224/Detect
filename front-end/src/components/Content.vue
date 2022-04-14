@@ -10,7 +10,7 @@
       :center="true"
     >
       <el-progress :percentage="percentage"></el-progress>
-      <span slot="footer" class="dialog-footer">请耐心等待约3秒钟</span>
+      <span slot="footer" class="dialog-footer">请耐心等待约5秒钟</span>
     </el-dialog>
 
     <div id="CT">
@@ -182,7 +182,7 @@ export default {
     };
   },
   created: function () {
-    document.title = "YOLOv5目标检测WEB端";
+    document.title = "毕业设计-目标检测WEB端";
   },
   methods: {
     true_upload() {
@@ -227,7 +227,7 @@ export default {
       param.append("file", file, file.name); //通过append向form对象添加数据
       var timer = setInterval(() => {
         this.myFunc();
-      }, 30);
+      }, 300);
       let config = {
         headers: { "Content-Type": "multipart/form-data" },
       }; //添加请求头
@@ -258,8 +258,8 @@ export default {
         });
     },
     myFunc() {
-      if (this.percentage + 33 < 99) {
-        this.percentage = this.percentage + 33;
+      if (this.percentage + 3 < 99) {
+        this.percentage = this.percentage + 3;
       } else {
         this.percentage = 99;
       }

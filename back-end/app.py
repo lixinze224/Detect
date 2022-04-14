@@ -52,17 +52,18 @@ def upload_file():
         image_path = os.path.join('./tmp/ct', file.filename)
         pid, image_info = core.main.c_main(
             image_path, current_app.model, file.filename.rsplit('.', 1)[1])
+        print(datetime.datetime.now(), "OK")
         return jsonify({'status': 1,
                         'image_url': 'http://127.0.0.1:5003/tmp/ct/' + pid,
                         'draw_url': 'http://127.0.0.1:5003/tmp/draw/' + pid,
                         'image_info': image_info})
-
+    
     return jsonify({'status': 0})
 
 
 @app.route("/download", methods=['GET'])
 def download_file():
-    # 需要知道2个参数, 第1个参数是本地目录的path, 第2个参数是文件名(带扩展名)
+    # 下载测试文件需要知道2个参数, 第1个参数是本地目录的path, 第2个参数是文件名(带扩展名)
     return send_from_directory('data', 'testfile.zip', as_attachment=True)
 
 

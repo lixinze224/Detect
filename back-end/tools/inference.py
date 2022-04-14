@@ -6,20 +6,17 @@ import cv2
 import torch
 import numpy as np
 
-sys.path.insert(0, '../lib')
-from utils import misc_utils, visual_utils, nms_utils
+
+from lib.utils import misc_utils, visual_utils, nms_utils
 class Detector(object):
     def __init__(self) -> None:
         self.model_dir = 'rcnn_emd_refine'
         self.resume_weights = '40'
-        model_root_dir = os.path.join('../model/', self.model_dir)
         # 切换路径 到model/rcnn_***
-        sys.path.insert(0, model_root_dir)
-        print(model_root_dir)
-        from config import config
-        from network import Network
-        # from models.rcnn_emd_refine.config import config
-        # from models.rcnn_emd_refine.network import Network
+        #print(model_root_dir)
+        from model.rcnn_emd_refine.config import config
+        from model.rcnn_emd_refine.network import Network
+
         self.config = config
         self.network = Network
         self.init_net()
@@ -30,8 +27,8 @@ class Detector(object):
 
     def init_net(self):
         # model_path
-        misc_utils.ensure_dir('outputs')
-        saveDir = os.path.join('../model', self.model_dir, self.config.model_dir)
+        misc_utils.ensure_dir('tools/outputs')
+        saveDir = os.path.join('model', self.model_dir, self.config.model_dir)
         model_file = os.path.join(saveDir,
                 'dump-{}.pth'.format(self.resume_weights))
         assert os.path.exists(model_file)
@@ -136,8 +133,9 @@ class Detector(object):
         resized_image = cv2.resize(
                 image, (t_width, t_height), interpolation=cv2.INTER_LINEAR)
         return resized_image, scale
-
+    def prints(self):
+        print("Its OK!")
 
 if __name__ == '__main__':
     model = Detector()
-    model.detect('inputs/8.jpg')
+    model.detect('inputs/9.jpg')
