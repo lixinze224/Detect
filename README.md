@@ -6,15 +6,14 @@
 
 视频链接：
 
-[https://www.bilibili.com/video/BV1Wr4y1K7Sh](https://www.bilibili.com/video/BV1Wr4y1K7Sh)
+
 
 最终效果：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210129172359202.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70)
+
 
 源码已经上传 Github：
 
-[https://github.com/Sharpiless/Yolov5-Flask-VUE](https://github.com/Sharpiless/Yolov5-Flask-VUE)
 
 
 # 2. YOLOv5模型训练：
@@ -280,6 +279,7 @@ def upload_file():
 在 Flask 后端项目下启动后端代码：
 
 ```bash
+cd back-end /
 python app.py
 ```
 
@@ -292,15 +292,14 @@ npm install
 然后运行前端：
 
 ```bash
+cd front-end /
 npm run serve
 ```
 
 然后在浏览器打开localhost即可：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210129172359202.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70)
+
 
 # 关注我的公众号：
 
-感兴趣的同学关注我的公众号——可达鸭的深度学习教程：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20210127153004430.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDkzNjg4OQ==,size_16,color_FFFFFF,t_70)
