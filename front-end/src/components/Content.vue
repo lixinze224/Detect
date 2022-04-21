@@ -15,9 +15,9 @@
 
     <div id="CT"> 
       <div id="Table_image" style="margin-top: 20px ;font-size: 0">
-        <el-radio-group v-model="radio1" size="medium">
-          <el-radio-button label="1" >Crowded</el-radio-button>
-          <el-radio-button label="2">NOH NMS</el-radio-button>
+        <el-radio-group v-model="radio1" size="medium" @change="openVn">
+          <el-radio-button label="1" :plain="true" >Crowded</el-radio-button>
+          <el-radio-button label="2" :plain="true" >NOH NMS</el-radio-button>
         </el-radio-group>
       </div>
       <div id="CT_image" style="font-size: 0">
@@ -194,6 +194,39 @@ export default {
     document.title = "YOLOv5目标检测WEB端";
   },
   methods: {
+    openVn() {
+      //this.$createElement HTML写法 第一个为标签 第二个为参数 第三个为文本内容
+      const h = this.$createElement;
+      
+      // var net = new FormData(); //创建form对象
+      // net.append("data", this.radio1); //通过append向form对象添加数据
+      var net = {"data":this.radio1}
+      let config = {
+        headers: { "Content-Type": "application/json" },
+      }; //添加请求头
+      axios
+        .post(this.server_url + "/net", net, config)
+        .then((response) => {
+          // console.log(response);
+          if (this.radio1 == 2){
+            this.$message({
+            message: h('p', null, [
+              h('span', null, ' 当前模型是 '),
+              h('i', { style: 'color: teal' }, 'NOH NMS')
+            ])
+           });
+          }
+          else{
+            this.$message({
+              message: h('p', null, [
+                h('span', null, ' 当前模型是 '),
+                h('i', { style: 'color: teal' }, 'Crowded')
+              ])
+            });
+          }
+          console.log(response);
+          });     
+    },
     true_upload() {
       this.$refs.upload.click();
     },
@@ -232,7 +265,7 @@ export default {
       this.showbutton = false;
       let file = e.target.files[0];
       this.url_1 = this.$options.methods.getObjectURL(file);
-      let param = new FormData(); //创建form对象
+      let param = new FormData(); //创建form对象 表单
       param.append("file", file, file.name); //通过append向form对象添加数据
       var timer = setInterval(() => {
         this.myFunc();
@@ -264,8 +297,10 @@ export default {
           this.dialogTableVisible = false;
           this.percentage = 0;
           this.notice1();
+          // console.log(response);
         });
     },
+    //进度条
     myFunc() {
       if (this.percentage + 3 < 99) {
         this.percentage = this.percentage + 3;

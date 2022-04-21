@@ -40,9 +40,10 @@ def allowed_file(filename):
 def hello_world():
     return redirect(url_for('static', filename='./index.html'))
 
-
+#和前端axios 的POST对应
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
+    #print(request.files) dataform传输
     file = request.files['file']
     print(datetime.datetime.now(), file.filename)
     if file and allowed_file(file.filename):
@@ -59,8 +60,16 @@ def upload_file():
                         'image_info': image_info})
     
     return jsonify({'status': 0})
-
-
+@app.route('/net', methods=['GET', 'POST'])
+def net():
+    # print(request.method) json传输 
+    # print(request.json)
+    if request.json['data'] == 2:
+        current_app.model = Detector()
+    elif request.json['data'] == 1:
+        current_app.model = Detector()
+    str = "OK" + network
+    return str
 @app.route("/download", methods=['GET'])
 def download_file():
     # 下载测试文件需要知道2个参数, 第1个参数是本地目录的path, 第2个参数是文件名(带扩展名)
