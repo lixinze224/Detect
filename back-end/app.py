@@ -68,7 +68,7 @@ def net():
         current_app.model = Detector()
     elif request.json['data'] == 1:
         current_app.model = Detector()
-    str = "OK" + network
+    str = "OK"
     return str
 @app.route("/download", methods=['GET'])
 def download_file():
