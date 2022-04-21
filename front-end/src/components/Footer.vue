@@ -8,7 +8,7 @@ export default {
   name: "Footer",
   data() {
     return {
-      msg: "Copyright 2021",
+      msg: "Copyright 2022",
     };
   },
 };
@@ -21,7 +21,7 @@ export default {
   width: 80%;
   height: 80px;
   margin: 20px auto;
-  margin-top: 140px;
+  margin-top: 150px;
 }
 
 p {

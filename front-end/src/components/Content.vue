@@ -10,32 +10,39 @@
       :center="true"
     >
       <el-progress :percentage="percentage"></el-progress>
-      <span slot="footer" class="dialog-footer">请耐心等待约5秒钟</span>
+      <span slot="footer" class="dialog-footer">请耐心等待约3秒钟</span>
     </el-dialog>
 
-    <div id="CT">
-      <div id="CT_image">
+    <div id="CT"> 
+      <div id="Table_image" style="margin-top: 20px ;font-size: 0">
+        <el-radio-group v-model="radio1" size="medium">
+          <el-radio-button label="1" >Crowded</el-radio-button>
+          <el-radio-button label="2">NOH NMS</el-radio-button>
+        </el-radio-group>
+      </div>
+      <div id="CT_image" style="font-size: 0">
         <el-card
           id="CT_image_1"
-          class="box-card"
           style="
             border-radius: 8px;
-            width: 800px;
-            height: 360px;
+            width: 1200px;
+            height: 500px;
             margin-bottom: -30px;
+            margin-top: -20px;
           "
         >
-          <div class="demo-image__preview1">
+        <div class="demo-image__preview1">
             <div
               v-loading="loading"
               element-loading-text="上传图片中"
               element-loading-spinner="el-icon-loading"
+              style="width: 400px;height: 350px;"
             >
               <el-image
                 :src="url_1"
                 class="image_1"
                 :preview-src-list="srcList"
-                style="border-radius: 3px 3px 0 0"
+                style="border-radius: 4px"
               >
                 <div slot="error">
                   <div slot="placeholder" class="error">
@@ -59,34 +66,35 @@
                 </div>
               </el-image>
             </div>
-            <div class="img_info_1" style="border-radius: 0 0 5px 5px">
-              <span style="color: white; letter-spacing: 6px">原始图像</span>
+            <div class="img_info_1" style="border-radius:  0 0 5px 5px">
+              <span style="color: white; font-size:18px; letter-spacing: 6px">原始图像</span>
             </div>
-          </div>
-          <div class="demo-image__preview2">
-            <div
+        </div>
+        <div class="demo-image__preview2">
+            <div 
               v-loading="loading"
               element-loading-text="处理中,请耐心等待"
               element-loading-spinner="el-icon-loading"
+              style="width: 400px;height: 350px;"
             >
               <el-image
                 :src="url_2"
                 class="image_1"
                 :preview-src-list="srcList1"
-                style="border-radius: 3px 3px 0 0"
+                style="border-radius: 4px"
               >
                 <div slot="error">
                   <div slot="placeholder" class="error">{{ wait_return }}</div>
                 </div>
               </el-image>
             </div>
-            <div class="img_info_1" style="border-radius: 0 0 5px 5px">
-              <span style="color: white; letter-spacing: 4px">检测结果</span>
+            <div class="img_info_1" style="border-radius:  0 0 5px 5px">
+              <span style="color: white; font-size:18px; letter-spacing: 6px">检测结果</span>
             </div>
-          </div>
+        </div>
         </el-card>
       </div>
-      <div id="info_patient">
+      <div class="base_box" style="margin-top: 10px;">
         <!-- 卡片放置表格 -->
         <el-card style="border-radius: 8px">
           <div slot="header" class="clearfix">
@@ -179,10 +187,11 @@ export default {
         opacity: 0,
       },
       dialogTableVisible: false,
+      radio1: 1
     };
   },
   created: function () {
-    document.title = "毕业设计-目标检测WEB端";
+    document.title = "YOLOv5目标检测WEB端";
   },
   methods: {
     true_upload() {
@@ -290,12 +299,7 @@ export default {
   /*line-height: 25px;*/
 }
 
-.n1 .el-step__description {
-  padding-right: 20%;
-  font-size: 14px;
-  line-height: 20px;
-  /* font-weight: 400; */
-}
+
 </style>
 
 <style scoped>
@@ -304,18 +308,14 @@ export default {
   margin: 0;
   padding: 0;
 }
-
-.dialog_info {
-  margin: 20px auto;
+.base_box{
+  margin: 0 auto;
 }
 
 .text {
   font-size: 14px;
 }
 
-.item {
-  margin-bottom: 18px;
-}
 
 .clearfix:before,
 .clearfix:after {
@@ -327,12 +327,6 @@ export default {
   clear: both;
 }
 
-.box-card {
-  width: 680px;
-  height: 200px;
-  border-radius: 8px;
-  margin-top: -20px;
-}
 
 .divider {
   width: 50%;
@@ -345,7 +339,6 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  margin-right: 0px;
   max-width: 1800px;
 }
 
@@ -354,7 +347,8 @@ export default {
   height: 40%;
   margin: 0px auto;
   padding: 0px auto;
-  margin-right: 180px;
+  margin-right: 80px;
+  margin-left: 80px;
   margin-bottom: 0px;
   border-radius: 4px;
 }
@@ -362,19 +356,20 @@ export default {
 #CT_image {
   margin-bottom: 60px;
   margin-left: 30px;
-  margin-top: 5px;
+  margin-right: 30px;
+  margin-top: 30px;
 }
 
 .image_1 {
-  width: 275px;
-  height: 260px;
+  width: 400px;
+  height: 350px;
   background: #ffffff;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 .img_info_1 {
-  height: 30px;
-  width: 275px;
+  height: 40px;
+  width: 400px;
   text-align: center;
   background-color: #21b3b9;
   line-height: 30px;
@@ -382,21 +377,21 @@ export default {
 
 .demo-image__preview1 {
   width: 250px;
-  height: 290px;
-  margin: 20px 60px;
+  height: 450px;
+  margin: 30px 100px;
   float: left;
 }
 
 .demo-image__preview2 {
   width: 250px;
-  height: 290px;
-
-  margin: 20px 460px;
+  height: 450px;
+  margin: 30px 205px;
+  float: right;
   /* background-color: green; */
 }
 
 .error {
-  margin: 100px auto;
+  margin: 150px auto;
   width: 50%;
   padding: 10px;
   text-align: center;
@@ -483,35 +478,24 @@ div {
   width: 100%;
   margin-bottom: 50px;
 }
-
-.divider_1 {
-  background-color: #ffffff;
-  height: 2px !important;
-  width: 100%;
-  margin-bottom: 20px;
-  margin: 20px auto;
+.colortip {
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #606266;
+    font-weight: bold;
 }
 
-.steps {
-  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica,
-    "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-  color: #21b3b9;
-  text-align: center;
-  margin: 15px auto;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
+#Table_image {
+  margin-bottom: 0px;
+  margin-top: 0;
+  margin-right: 300px;
+  margin-left: 300px;
+  height: 50px;
 }
 
-.step_1 {
-  /*color: #303133 !important;*/
-  margin: 20px 26px;
-}
 
-#info_patient {
-  margin-top: 10px;
-  margin-right: 160px;
-}
 </style>
 
 
