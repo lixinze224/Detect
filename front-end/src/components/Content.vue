@@ -196,10 +196,6 @@ export default {
   methods: {
     openVn() {
       //this.$createElement HTML写法 第一个为标签 第二个为参数 第三个为文本内容
-      const h = this.$createElement;
-      
-      // var net = new FormData(); //创建form对象
-      // net.append("data", this.radio1); //通过append向form对象添加数据
       var net = {"data":this.radio1}
       let config = {
         headers: { "Content-Type": "application/json" },
@@ -207,26 +203,27 @@ export default {
       axios
         .post(this.server_url + "/net", net, config)
         .then((response) => {
-          // console.log(response);
+          const h = this.$createElement;
           if (this.radio1 == 2){
             this.$message({
-            message: h('p', null, [
-              h('span', null, ' 当前模型是 '),
-              h('i', { style: 'color: teal' }, 'NOH NMS')
-            ])
-           });
-          }
-          else{
+                message: h('p', null, [
+                  h('span', null, ' 当前模型是 '),
+                  h('i', { style: 'color: teal' }, 'NOH NMS')
+                ])
+                })
+            }
+          else if(this.radio1==1) {
             this.$message({
-              message: h('p', null, [
-                h('span', null, ' 当前模型是 '),
-                h('i', { style: 'color: teal' }, 'Crowded')
-              ])
-            });
-          }
+                message: h('p', null, [
+                  h('span', null, ' 当前模型是 '),
+                  h('i', { style: 'color: teal' }, 'Crowded')
+                ])
+                });    
+              }
           console.log(response);
-          });     
+        });     
     },
+
     true_upload() {
       this.$refs.upload.click();
     },
