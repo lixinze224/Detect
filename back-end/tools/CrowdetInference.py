@@ -8,7 +8,7 @@ import numpy as np
 
 
 from lib.utils import misc_utils, visual_utils, nms_utils
-class Detector(object):
+class CrowdetDetector(object):
     def __init__(self) -> None:
         self.model_dir = 'rcnn_emd_refine'
         self.resume_weights = '40'
@@ -133,9 +133,9 @@ class Detector(object):
         resized_image = cv2.resize(
                 image, (t_width, t_height), interpolation=cv2.INTER_LINEAR)
         return resized_image, scale
-    def prints(self):
-        print("Its OK!")
+    def print_name(self):
+        print("Now It's Crowdet!")
 
 if __name__ == '__main__':
-    model = Detector()
+    model = CrowdetDetector()
     model.detect('inputs/9.jpg')

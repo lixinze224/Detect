@@ -168,7 +168,7 @@ def fast_rcnn_inference_single_image_with_overlap(
         overlap_boxes = np.ascontiguousarray(overlap_boxes.cpu())
 
         keep = batched_noh_nms(
-            boxes, scores, overlap_probs, overlap_boxes, Nt=nms_thresh, thresh=0.01, method=3
+            boxes, scores, overlap_probs, overlap_boxes, Nt=nms_thresh, thresh=0.5, method=3
         )
         # keep = batched_noh_nms(
         #     boxes, scores, overlap_probs, overlap_boxes, Nt=nms_thresh, thresh=0.01, method=3

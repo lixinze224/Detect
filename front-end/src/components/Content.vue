@@ -10,7 +10,7 @@
       :center="true"
     >
       <el-progress :percentage="percentage"></el-progress>
-      <span slot="footer" class="dialog-footer">请耐心等待约3秒钟</span>
+      <span slot="footer" class="dialog-footer">请耐心等待约8秒钟</span>
     </el-dialog>
 
     <div id="CT"> 
@@ -191,7 +191,7 @@ export default {
     };
   },
   created: function () {
-    document.title = "YOLOv5目标检测WEB端";
+    document.title = "毕业设计目标检测WEB端";
   },
   methods: {
     openVn() {

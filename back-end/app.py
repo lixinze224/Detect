@@ -4,8 +4,9 @@ import os
 import shutil
 from datetime import timedelta
 from flask import *
-from tools.inference import Detector
-
+# from tools.inference import Detector
+from tools.NohInference import NohDetector
+from tools.CrowdetInference import CrowdetDetector
 import core.main
 
 UPLOAD_FOLDER = r'./uploads'
@@ -21,7 +22,7 @@ werkzeug_logger.setLevel(rel_log.ERROR)
 # 解决缓存刷新问题
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 
-
+model = CrowdetDetector()
 # 添加header解决跨域
 @app.after_request
 def after_request(response):
@@ -52,7 +53,7 @@ def upload_file():
         shutil.copy(src_path, './tmp/ct')
         image_path = os.path.join('./tmp/ct', file.filename)
         pid, image_info = core.main.c_main(
-            image_path, current_app.model, file.filename.rsplit('.', 1)[1])
+            image_path, model, file.filename.rsplit('.', 1)[1])
         print(datetime.datetime.now(), "OK")
         return jsonify({'status': 1,
                         'image_url': 'http://127.0.0.1:5003/tmp/ct/' + pid,
@@ -63,12 +64,14 @@ def upload_file():
 @app.route('/net', methods=['GET', 'POST'])
 def net():
     # print(request.method) json传输 
-    # print(request.json)
-    if request.json['data'] == 2:
-        current_app.model = Detector()
-    elif request.json['data'] == 1:
-        current_app.model = Detector()
+    global model
+    print(request.json)
+    if request.json['data'] == '2':
+        model = NohDetector()
+    elif request.json['data'] == '1':
+        model = CrowdetDetector()
     str = "OK"
+    model.print_name()
     return str
 @app.route("/download", methods=['GET'])
 def download_file():
@@ -96,5 +99,5 @@ if __name__ == '__main__':
         if not os.path.exists(ff):
             os.makedirs(ff)
     with app.app_context():
-        current_app.model = Detector()
+        model = CrowdetDetector()
     app.run(host='127.0.0.1', port=5003, debug=True)
