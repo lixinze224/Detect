@@ -23,6 +23,8 @@ werkzeug_logger.setLevel(rel_log.ERROR)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 
 model = CrowdetDetector()
+crowdetmodel = CrowdetDetector()
+nohmodel = NohDetector()
 # 添加header解决跨域
 @app.after_request
 def after_request(response):
@@ -67,9 +69,9 @@ def net():
     global model
     print(request.json)
     if request.json['data'] == '2':
-        model = NohDetector()
+        model = nohmodel
     elif request.json['data'] == '1':
-        model = CrowdetDetector()
+        model = crowdetmodel
     str = "OK"
     model.print_name()
     return str
@@ -99,5 +101,6 @@ if __name__ == '__main__':
         if not os.path.exists(ff):
             os.makedirs(ff)
     with app.app_context():
-        model = CrowdetDetector()
+        # model = CrowdetDetector()
+        model.print_name()
     app.run(host='127.0.0.1', port=5003, debug=True)

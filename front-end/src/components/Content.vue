@@ -10,13 +10,13 @@
       :center="true"
     >
       <el-progress :percentage="percentage"></el-progress>
-      <span slot="footer" class="dialog-footer">请耐心等待约8秒钟</span>
+      <span slot="footer" class="dialog-footer">请耐心等待约10秒钟</span>
     </el-dialog>
 
     <div id="CT"> 
       <div id="Table_image" style="margin-top: 20px ;font-size: 0">
         <el-radio-group v-model="radio1" size="medium" @change="openVn">
-          <el-radio-button label="1" :plain="true" >Crowded</el-radio-button>
+          <el-radio-button label="1" :plain="true" >Crowddet</el-radio-button>
           <el-radio-button label="2" :plain="true" >NOH NMS</el-radio-button>
         </el-radio-group>
       </div>
@@ -216,7 +216,7 @@ export default {
             this.$message({
                 message: h('p', null, [
                   h('span', null, ' 当前模型是 '),
-                  h('i', { style: 'color: teal' }, 'Crowded')
+                  h('i', { style: 'color: teal' }, 'Crowddet')
                 ])
                 });    
               }
